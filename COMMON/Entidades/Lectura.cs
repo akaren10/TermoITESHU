@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace COMMON.Entidades
 {
-    public abstract class Lectura : Base
+    public  class Lectura : Base
     {
         public string IdDispositivo { get; set; }
         public float Temperatura { get; set; }

@@ -8,9 +8,7 @@ namespace DAL.Mongo
 {
     public class GenericRepositorio<T> : IGenericRepositorio<T> where T : Base
     {
-        string cadenaConexion = @"mongodb://
-        equipo04:equipo04@equipo4.eastus.cloudapp.azure.com:27017/?
-        authMechanism=DEFAULT&authSource=admin&readPreference=nearest";
+        string cadenaConexion = @"mongodb://equipo04:equipo04@equipo4.eastus.cloudapp.azure.com:27017/?authSource=admin&readPreference=primary&appName=MongoDB%2520Compass&ssl=false";
         MongoClient mongoClient;
         IMongoDatabase db;
         BaseValidator<T> validator;
@@ -51,7 +49,7 @@ namespace DAL.Mongo
             try
             {
                 Error = "";
-                return Coleccion().DeleteOne(id).DeletedCount > 0;
+                return Coleccion().DeleteOne(e=>e.Id==id).DeletedCount > 0;
             }
             catch (Exception ex)
             {
