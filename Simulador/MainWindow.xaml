@@ -1,0 +1,56 @@
+﻿<Window x:Class="Simulador.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Simulador"
+        mc:Ignorable="d"
+        Title="Simulador de dispositivos IoT" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition  Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <Label Content="Usuario"/>
+            <ComboBox Name="cmbUsuarios" Width="150" DisplayMemberPath="Nombre"/>
+            <Label Content="User: "/>
+            <ComboBox Name="cmbUser" Width="150"/>
+            <Label Content="Dispositivos a Generar: "/>
+            <TextBox x:Name="txtNumDispositivos" Width="50"/>
+            <Button Content="Generar" Margin="20,0" Padding="25,0" x:Name="btnGenerar" Click="Botton_Click"/>
+            <Button Content="Limpiar" Padding="25,0" x:Name="btnLimpiar" Click="btnLimpiar_Click"/>
+        </StackPanel>
+       <ListView Grid.Row="1" x:Name="lstDispositivos">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Grid.Row="0">
+                            <Label Content="{Binding NombreCliente}"/>
+                            <Label Content="Temp:" Margin="20,0,0,0"/>
+                            <Label Content="{Binding Lectura.Temperatura}"/>
+                            <Label Content="Hum:" Margin="20,0,0,0"/>
+                            <Label Content="{Binding Lectura.Humedad}"/>
+                            <Label Content="Lum: " Margin="20,0,0,0"/>
+                            <Label Content="{Binding Lectura.Luminosidad}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Row="1">
+                            <Label Content="{Binding dispositivo.NombreRele1}" Margin="20,0"/>
+                            <Label Content="{Binding Lectura.EstatusRele1}" Margin="20,0"/>
+                            <Label Content="{Binding dispositivo.NombreRele2}" Margin="20,0"/>
+                            <Label Content="{Binding Lectura.EstatusRele2}" Margin="20,0"/>
+                            <Label Content="{Binding dispositivo.NombreRele3}" Margin="20,0"/>
+                            <Label Content="{Binding Lectura.EstatusRele3}" Margin="20,0"/>
+                            <Label Content="{Binding dispositivo.NombreRele4}" Margin="20,0"/>
+                            <Label Content="{Binding Lectura.EstatusRele4}" Margin="20,0"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+       </ListView>
+    </Grid>
+</Window>
