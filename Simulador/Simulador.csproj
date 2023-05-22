@@ -7,4 +7,9 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BIZ\BIZ.csproj" />
+    <ProjectReference Include="..\COMMON\COMMON.csproj" />
+  </ItemGroup>
+
 </Project>

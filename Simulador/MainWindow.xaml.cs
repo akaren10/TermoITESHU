@@ -9,21 +9,23 @@ namespace Simulador
 {
     public partial class MainWindow : Window
     {
-        Dispatcher Timer;
+        DispatcherTimer Timer;
         UsuarioManager usuarioManager;
         DispositivoManager dispositivoManager;
         List<DispositivoSimulado> dispositivosSimulados;
         string mqttServer = "";
         int mqttPort = 1883;
+        private EventHandler Timer_Tick;
+
         public MainWindow()
         {
             InitializeComponent();
             usuarioManager = new UsuarioManager();
             dispositivoManager = new DispositivoManager();
-            cmbUsuarios.Items.Clear();
-            cmbUser.Items.Clear();
-            cmbUser.Items.Add("Actuales");
-            cmbUser.Items.Add("Generar nuevos");
+            cmbUsuarios.ItemsSource = usuarioManager.ObtenerTodos;
+            cmbUsar.Items.Clear();
+            cmbUsar.Items.Add("Actuales");
+            cmbUsar.Items.Add("Generar nuevos");
             dispositivosSimulados = new List<DispositivoSimulado>(); 
         }
 
@@ -32,7 +34,7 @@ namespace Simulador
             Usuario user = cmbUsuarios.SelectedItem as Usuario;
             if (user != null) 
             { 
-                switch(cmbUser.SelectedIndex) 
+                switch(cmbUsar.SelectedItem) 
                 {
                     case "Actuales":
                         var disp = user.Dispositivos;
@@ -61,7 +63,7 @@ namespace Simulador
                         }
                         else
                         {
-                            MessageBox.Show("Insique el numero de dispositivos tempolares a simular", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show("Indique el numero de dispositivos tempolares a simular", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                         break;
                     default:
@@ -104,7 +106,7 @@ namespace Simulador
             d.FechaColocacion = DateTime.Now;
             d.Nombre = "Temp" + i;
             d.NombreRele1 = "Rele 1";
-            d.NombreRele2 = "Rele2";
+            d.NombreRele2 = "Rele 2";
             d.NombreRele3 = "Rele 3";
             d.NombreRele4 = "Rele 4";
             return d;
