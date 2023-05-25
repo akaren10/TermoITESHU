@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TermoITESHUMovil.Pages.DispositivosPage"
+             xmlns:entidades="clr-namespace:COMMON.Entidades;assembly=COMMON"
+             Title="{Binding Nombre, StringFormat='Dispositivos de {0}'}">
+    <ContentPage.BindingContext>
+        <entidades:Usuario/>
+    </ContentPage.BindingContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <ScrollView Grid.Row="0">
+            <ListView x:Name="lstDispositivos" ItemsSource="{Binding Dispositivos}" ItemTapped="lstDispositivos_ItemTapedd">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Source="termoiteshulogo.png" Grid.Column="0" Grid.Row="0" WidthRequest="24"/>
+                                <Label Text="{Binding Nombre}" Grid.Column="1" Grid.Row="0"/>
+                                <Image Source="localizacion.png" Grid.Column="2" Grid.Row="0" WidthRequest="24"/>
+                                <Label Text="{Binding Ubicacion}" Grid.Column="3" Grid.Row="0"/>
+                                <Image Source="id.png" Grid.Column="4" Grid.Row="0" WidthRequest="24"/>
+                                <Label Text="{Binding Id}" Grid.Column="5" Grid.Row="0" Grid.ColumnSpan="3"/>
+
+                                <Image Source="foco.png" Grid.Column="0" Grid.Row="1" WidthRequest="24"/>
+                                <Label Text="{Binding NombreRele1}" Grid.Column="1" Grid.Row="1"/>
+                                <Image Source="foco.png" Grid.Column="2" Grid.Row="1" WidthRequest="24"/>
+                                <Label Text="{Binding NombreRele2}" Grid.Column="3" Grid.Row="1"/>
+                                <Image Source="foco.png" Grid.Column="4" Grid.Row="1" WidthRequest="24"/>
+                                <Label Text="{Binding NombreRele3}" Grid.Column="5" Grid.Row="1"/>
+                                <Image Source="foco.png" Grid.Column="6" Grid.Row="1" WidthRequest="24"/>
+                                <Label Text="{Binding NombreRele4}" Grid.Column="7" Grid.Row="1"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+        <Button Text="Agregar Dispositivo" Margin="50,10" Grid.Row="1" BackgroundColor="Blue" TextColor="White" x:Name="btnAgregarDispositivo"
+                Clicked="btnAgregarDispositivo_Clicked"/>
+    </Grid>
+        
+</ContentPage>

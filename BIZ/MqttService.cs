@@ -14,8 +14,12 @@ namespace BIZ
         MqttClientOptions options;
         MqttFactory factory;
         public event EventHandler<string> MensajeRecibido;
-        public MqttService(string mqttServer, int mqttPort, string nombreCliente)
+        Random r;
+        string topic;
+        public MqttService(string mqttServer, int mqttPort, string nombreCliente, string topic)
         {
+            this.topic = topic;
+            r= new Random(DateTime.Now.Millisecond);
             MqttServer = mqttServer;
             MqttPort = mqttPort;
             NombreCliente = nombreCliente;
@@ -25,7 +29,7 @@ namespace BIZ
             mqttClient.ApplicationMessageReceivedAsync += MqttClient_ApplicationMessageReceivedAsync;
             options = new MqttClientOptionsBuilder()
                 .WithTcpServer(mqttServer, mqttPort)
-                .WithClientId(NombreCliente)
+                .WithClientId($"{nombreCliente}{r.Next()}")
                 .WithCleanSession(false)
                 .Build();
             ConectarMQTT();
@@ -48,7 +52,7 @@ namespace BIZ
         private async void ConectarMQTT()
         {
             await mqttClient.ConnectAsync(options,CancellationToken.None);
-            var suscriptionOptions = factory.CreateSubscribeOptionsBuilder().WithTopicFilter(f => { f.WithTopic($"{NombreCliente}/in"); }).Build();
+            var suscriptionOptions = factory.CreateSubscribeOptionsBuilder().WithTopicFilter(f => { f.WithTopic($"{NombreCliente}/{topic}"); }).Build();
             while(!mqttClient.IsConnected)
             {
                 Thread.Sleep(10);

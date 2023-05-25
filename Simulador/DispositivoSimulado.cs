@@ -45,7 +45,8 @@ namespace Simulador
             r = new Random(DateTime.Now.Millisecond);
             string[] datos = dispositivo.Id.Split (',');
             NombreCliente = datos[0];
-            mqtt = new MqttService(mqttServer, mqttPort, NombreCliente);
+
+            mqtt = new MqttService(mqttServer, mqttPort, NombreCliente,"in");
             mqtt.MensajeRecibido += Mqtt_MensajeRecibido;
         }
         private void Mqtt_MensajeRecibido(object? sender, string e)

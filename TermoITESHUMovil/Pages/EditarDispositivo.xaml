@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TermoITESHUMovil.Pages.EditarDispositivo"
+             xmlns:entidades="clr-namespace:COMMON.Entidades;assembly=COMMON"
+             Title="Editar Dispositivo">
+    <ContentPage.BindingContext>
+        <entidades:Dispositivo/>
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="Nombre:" FontAttributes="Bold" Grid.Column="0" Grid.Row="0"/>
+            <Label Text="Ubicación:" FontAttributes="Bold" Grid.Column="0" Grid.Row="1"/>
+            <Label Text="Fecha colocación:" FontAttributes="Bold" Grid.Column="0" Grid.Row="2"/>
+            <Label Text="Nombre rele 1:" FontAttributes="Bold" Grid.Column="0" Grid.Row="3"/>
+            <Label Text="Nombre rele 2:" FontAttributes="Bold" Grid.Column="0" Grid.Row="4"/>
+            <Label Text="Nombre rele 3:" FontAttributes="Bold" Grid.Column="0" Grid.Row="5"/>
+            <Label Text="Nombre rele 4:" FontAttributes="Bold" Grid.Column="0" Grid.Row="6"/>
+            <Label Text="Habilitado:" FontAttributes="Bold" Grid.Column="0" Grid.Row="7"/>
+
+            <Entry Text="{Binding Nombre}" Grid.Column="1" Grid.Row="0"/>
+            <Entry Text="{Binding Ubicacion}" Grid.Column="1" Grid.Row="1"/>
+            <DatePicker Date="{Binding FechaColocacion}" Grid.Column="1" Grid.Row="2"/>
+            <Entry Text="{Binding NombreRele1}" Grid.Column="1" Grid.Row="3"/>
+            <Entry Text="{Binding NombreRele2}" Grid.Column="1" Grid.Row="4"/>
+            <Entry Text="{Binding NombreRele3}" Grid.Column="1" Grid.Row="5"/>
+            <Entry Text="{Binding NombreRele4}" Grid.Column="1" Grid.Row="6"/>
+            <Switch IsToggled="{Binding Habilitado}" Grid.Column="1" Grid.Row="7"/>
+
+            <Button Text="Guardar" x:Name="btnGuardar" Clicked="btnGuardar_Clicked" Background="Blue" 
+                        TextColor="White" Grid.Column="1" Grid.Row="9"/>
+            <Button Text="Eliminar" x:Name="btnEliminar" Clicked="btnEliminar_Clicked" Grid.Column="0" Grid.Row="9"
+                    Background="Red" TextColor="White" />
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TermoITESHUMovil.Pages.LoginPage"
+             Title="Termo ITESHU">
+   
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <Image Source="Termoiteshulogo512.png" HeightRequest="150" Grid.Row="0" HorizontalOptions="Center"/>
+        <Label Text="Email" Grid.Row="1" HorizontalOptions="Center"/>
+        <Entry x:Name="entEmail" Text="" HorizontalTextAlignment="Center" Grid.Row="2" Margin="50,10"/>
+        <Label Text="Password" Grid.Row="3" HorizontalOptions="Center"/>
+        <Entry x:Name="entPassword" Text=""  IsPassword="True" HorizontalTextAlignment="Center" Grid.Row="4" Margin="50,10"/>
+
+        <Button Text="Iniciar sesión" Grid.Row="5" Margin="50,20" BackgroundColor="Blue" TextColor="White"  x:Name="btnIniciarSesion" Clicked="btnIniciarSesion_Clicked"/>
+        <Label Text="Crear Cuenta" x:Name="btnCrearCuenta" Grid.Row="6" Margin="50,20" HorizontalTextAlignment="Center" FontAttributes="Italic" TextColor="LightBlue">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+            </Label.GestureRecognizers>
+        </Label>
+        <Label Text="Desarrollado por MIDS. Carlos Espinoza" FontAttributes="Italic" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="7"/>
+    </Grid>
+    
+ </ContentPage>
